@@ -8,7 +8,7 @@ const autoprefixer = require('gulp-autoprefixer');
 const browsersync = require('browser-sync').create();
 const include = require('gulp-file-include')
 
-const BUILD_DIR = '/prod';
+const BUILD_DIR = './prod';
 
 function cleanTask() {
     return del([ BUILD_DIR ], { force: true });
@@ -34,6 +34,7 @@ function jsTask() {
 function htmlTask() {
     return src('*.html')
         .pipe(include())
+        .pipe(dest(`${ BUILD_DIR }`))
 }
 
 function fontsTask() {
